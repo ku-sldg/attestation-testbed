@@ -1,0 +1,110 @@
+\documentclass[runningheads]{llncs}
+%
+\usepackage{graphicx}
+% Used for displaying a sample figure. If possible, figure files should
+% be included in EPS format.
+\usepackage{tikz}
+\usetikzlibrary{arrows}
+\usepackage{verbatim}
+%\usepackage{amsmath}
+%\usepackage{amssymb}
+%\usepackage{graphicx}
+%\usepackage[all]{xy}
+\usepackage{array}
+\usepackage{enumitem}
+%\usepackage{cite}
+\usepackage{natbib}
+% If you use the hyperref package, please uncomment the following line
+% to display URLs in blue roman font according to Springer's eBook style:
+% \renewcommand\UrlFont{\color{blue}\rmfamily}
+\usepackage[breaklinks=true]{hyperref}
+\usepackage{breakcites}
+\renewcommand\UrlFont{\color{blue}\rmfamily}
+
+\begin{document}
+%
+\title{Contribution Title\thanks{Supported by organization x.}}
+%
+%\titlerunning{Abbreviated paper title}
+% If the paper title is too long for the running head, you can set
+% an abbreviated paper title here
+%
+\author{First Author \and
+Second Author \and
+Third Author}
+%
+\authorrunning{F. Author et al.}
+% First names are abbreviated in the running head.
+% If there are more than two authors, 'et al.' is used.
+%
+\institute{Information and Telecommunication Technology Center \\ The
+  University of Kansas \\ Lawrence, KS 66045 \\
+  \email{\{authors\}@ku.edu}}
+%
+\maketitle              % typeset the header of the contribution
+%
+\begin{abstract}
+The abstract should briefly summarize the contents of the paper in
+15--250 words.
+
+\keywords{First keyword  \and Second keyword \and Another keyword.}
+\end{abstract}
+
+\section{Introduction}
+\label{sec:introduction}
+
+\begin{figure}[hbtp]
+  \centering
+
+  \tikzstyle{block}=[draw,rectangle,minimum size=0.75cm]
+  
+  \begin{tikzpicture}
+    \node[block] (HR0) at (-2,1){$H_0$};
+    \node[block] (HR1) at (-1,1){$H_1$};
+    \node[block] (HR2) at (0,1){$H_2$};
+    \node[block] (HR3) at (1,1){$H_3$};
+    \node[block] (HR4) at (2,1){$H_4$};
+    \node (TPMB) at (2,-1){$(B,\{B^{-1}\}_{K})$};
+    \node(TPMA) at (-2,-1){$(A,\{A^{-1}\}_{K})$};
+    \node[block] (B) at (2,-3){$B$};
+    \node[block] (A) at (-2,-3){$A$};
+
+    \node[color=blue] at (2,-4) (BINI) {$\mathsf{B.INI}$};
+    \node[color=red] at (-2,-4) (AINI) {$\mathsf{A.INI}$};
+
+    \node[color=green] at (-0,-5) (AINI) {$\mathsf{MANIFEST}$};
+    
+    \draw[-stealth,color=red] (A.north) -- (TPMA.south);
+    \draw[-stealth,color=blue] (B.north) -- (TPMB.south);
+
+    \draw[-stealth,color=red] (TPMA.north) -- (HR0.south);
+    \draw[-stealth,color=blue] (TPMB.north) -- (HR1.south);
+    \draw[-stealth,color=red] (TPMA.north) -- (HR2.south);
+    \draw[-stealth,color=red] (TPMA.north) -- (HR3.south);
+    \draw[-stealth,color=blue] (TPMB.north) -- (HR4.south);
+        
+    \draw[-stealth,color=green] (A.east) -- (B.west);
+
+    \node[color=black] (BC) at (4,1){\textsf{geth}};
+    \node[color=black] (KS) at (4,-1){\textsf{keys}};
+    \node[color=black] (AM) at (4,-3){\textsf{AMs}};
+    \node[color=black] (AM) at (4,-4.5){\textsf{configs}};
+  \end{tikzpicture}
+  
+  \caption{Big Picture}
+  \label{fig:big-picture}
+\end{figure}
+
+%
+%
+%
+% ---- Bibliography ----
+%
+% BibTeX users should specify bibliography style 'splncs04'.
+% References will then be sorted and formatted in the correct style.
+%
+%\bibliographystyle{splncs04}
+\bibliographystyle{splncsnat}
+\bibliography{sldg}
+%
+\end{document}
