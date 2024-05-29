@@ -1,0 +1,35 @@
+Consider a demo of the following form:
+
+1.  Understory:  Protects the Attestation Mgr VM from the target VM,
+    with AM to TVM inspection.
+
+2.  AM periodically measures TVM kernel to establish Linux kernel with
+    SELinux enabled, plus relevant properties of the SELinux policy.
+    See below, (4).
+
+    AM also ascertains that the TVM maintains a Collocated Attestation
+    Mgr within TVM.
+
+3.  AM delivers a Copland phrase to CAM causing it to measure a
+    pipeline consisting of an Ingest Mgr; a Sanitizer; a
+    Post-sanitizer Policy Checker; and an Emission mgr.
+
+    We want to check code integrity about these components and
+    possibly also control flow integrity or configuration data
+    integrity.  
+
+4.  The relevant properties of the SELinux policy are:
+
+    (a) CAM is protected from non-CAM components;
+
+    (b) Only the intended executable can transition into the domain
+    for each of the intended pipeline stages;
+    
+    (c) Each pipeline component is the only component that can read
+    files from its input directory; that can write files to its output
+    directory; 
+
+    (d) Only a manager component can list and delete files in those
+    directories.
+
+
